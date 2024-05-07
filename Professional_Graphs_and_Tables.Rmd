@@ -1,0 +1,37 @@
+---
+title: "Professional Graphs and Tables"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message=FALSE, warning=FALSE, fig.height = 4, fig.width = 6)
+```
+
+```{r}
+library(tidyverse)
+library(knitr)
+```
+
+## Figure Captions
+
+```{r, fig.cap="Scatterplot displaying the relationship between horsepower and gas mileage in cars."}
+ggplot(data=mtcars, aes(x=hp, y=mpg)) + geom_point() + 
+  labs(title = "Horsepower and Gas Mileage in Cars",
+         x="Horsepower", y = "Miles per Gallon")
+```
+
+
+
+## Professional Tables
+
+The `kable` command in the `knitr` package is useful for creating tables with professional appearance, using dplyr commands. 
+
+When using `kable`, the caption command goes inside the kable function in the R chunk. 
+
+```{r}
+CarsSummary <- mtcars %>% group_by(cyl) %>% summarize(Mean_mpg = mean(mpg), 
+                                                         Min_mpg = min(mpg), 
+                                                      Max_mpg = max(mpg))
+kable(CarsSummary,  caption="Table of MPG by Car Type")
+```
+
