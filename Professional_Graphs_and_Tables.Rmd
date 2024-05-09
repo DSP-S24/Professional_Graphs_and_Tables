@@ -30,7 +30,7 @@ When using `kable`, the caption command goes inside the kable function in the R 
 
 ```{r}
 CarsSummary <- mtcars %>% group_by(cyl) %>% summarize(Mean_mpg = mean(mpg), 
-                                                         Min_mpg = min(mpg), 
+                                                      Min_mpg = min(mpg), 
                                                       Max_mpg = max(mpg))
 kable(CarsSummary,  caption="Table of MPG by Car Type")
 ```
